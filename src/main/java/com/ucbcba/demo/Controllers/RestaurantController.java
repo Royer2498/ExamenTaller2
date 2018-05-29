@@ -40,6 +40,13 @@ public class RestaurantController {
     private PhotoService photoService;
     private UserLikesService userLikesService;
     private UserService userService;
+    private CountryService countryService;
+
+
+    @Autowired
+    public void setCountryService(CountryService countryService) {
+        this.countryService = countryService;
+    }
 
     @Autowired
     public void setRestaurantService(RestaurantService restaurantService) {
@@ -131,6 +138,7 @@ public class RestaurantController {
             restaurantPhotos.add(base64Encoded);
         }
         model.addAttribute("photos", restaurantPhotos);
+        model.addAttribute("country",countryService.getCountry(restaurantService.getRestaurant(id).getCity().getCountry().getId()));
         return "ShowRestaurant";
     }
 
@@ -208,6 +216,7 @@ public class RestaurantController {
             restaurantPhotos.add(base64Encoded);
         }
         model.addAttribute("photos", restaurantPhotos);
+        model.addAttribute("country",countryService.getCountry(restaurantService.getRestaurant(id).getCity().getCountry().getId()));
         return "restaurantUserView";
     }
 

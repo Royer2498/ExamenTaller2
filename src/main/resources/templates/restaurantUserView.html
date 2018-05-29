@@ -216,6 +216,10 @@
                 <h4>City: </h4>
                 <h5 th:text="${restaurant.city.name}"></h5>
             </div>
+            <div class="col-md-9">
+                <h4>Country: </h4>
+                <h5 th:text="${country}"></h5>
+            </div>
         </div>
 
         <div th:if="${#lists.size(photos)}" class="form-group">
